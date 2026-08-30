@@ -1,3 +1,16 @@
+/**
+ * dsh-project-scaffold — 项目脚手架
+ *
+ * 功能：
+ * 1. 模板系统
+ * 2. 快速创建
+ * 3. 模板预览
+ * 4. 自定义模板
+ *
+ * 工具：scaffold_list, scaffold_preview, scaffold_create, scaffold_add_file
+ * 命令：/scaffold
+ * 配置：enabled
+ */
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from 'node:fs';
 import { resolve, join } from 'node:path';
 import { z } from 'zod';
