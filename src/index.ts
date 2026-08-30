@@ -12,7 +12,7 @@
  * 配置：enabled
  */
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from 'node:fs';
-import { resolve, join } from 'node:path';
+import { resolve, join, dirname } from 'node:path';
 import { z } from 'zod';
 
 export const name = 'dsh-project-scaffold';
@@ -143,7 +143,7 @@ export function apply(ctx: any, config: Config) {
       const createdFiles: string[] = [];
       for (const file of tpl.files) {
         const filePath = join(baseDir, applyTemplateVars(file.path, { name: args.name }));
-        const dir = filePath.substring(0, filePath.lastIndexOf('/'));
+        const dir = dirname(filePath);
         mkdirSync(dir, { recursive: true });
         writeFileSync(filePath, applyTemplateVars(file.content, { name: args.name }), 'utf-8');
         createdFiles.push(filePath);
